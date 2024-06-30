@@ -64,7 +64,10 @@ hist(total_steps$x, col = "blue", breaks = 20,
 avg_daily <- aggregate(x=list(Steps = data$steps), 
                        by=list(Interval=data$interval), 
                        FUN="mean", na.rm=TRUE)
+```
 
+
+``` r
 # Create a time series plot using ggplot function  
 
 ggplot(data=avg_daily, aes(x= Interval, y= Steps)) +    

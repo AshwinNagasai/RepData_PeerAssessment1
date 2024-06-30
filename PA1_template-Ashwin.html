@@ -393,9 +393,8 @@ The median total number of steps taken per day is 10765</p>
 <pre class="r"><code># Create a variable avg_daily
 avg_daily &lt;- aggregate(x=list(Steps = data$steps), 
                        by=list(Interval=data$interval), 
-                       FUN=&quot;mean&quot;, na.rm=TRUE)
-
-# Create a time series plot using ggplot function  
+                       FUN=&quot;mean&quot;, na.rm=TRUE)</code></pre>
+<pre class="r"><code># Create a time series plot using ggplot function  
 
 ggplot(data=avg_daily, aes(x= Interval, y= Steps)) +    
             geom_line() + xlab(&quot;5-minute interval&quot;) +

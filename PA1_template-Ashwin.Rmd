@@ -40,12 +40,14 @@ hist(total_steps$x, col = "blue", breaks = 20,
 
 ## What is the average daily activity pattern?
 
-```{r timeseries plot}
+```{r}
 # Create a variable avg_daily
 avg_daily <- aggregate(x=list(Steps = data$steps), 
                        by=list(Interval=data$interval), 
                        FUN="mean", na.rm=TRUE)
+```
 
+```{r timeseries plot}
 # Create a time series plot using ggplot function  
 
 ggplot(data=avg_daily, aes(x= Interval, y= Steps)) +    
