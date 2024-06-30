@@ -5,7 +5,6 @@ output:
     keep_md: true
     fig_caption: true
 ---
-
 ## Loading and preprocessing the data
 
 ``` r
