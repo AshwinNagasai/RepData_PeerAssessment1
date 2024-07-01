@@ -49,7 +49,7 @@ The median total number of steps taken per day is 10765
 
 
 ``` r
-hist(total_steps$x, col = "blue", breaks = 20,
+histogram <- hist(total_steps$x, col = "blue", breaks = 20,
      main = "Total number of steps taken each day",
      xlab = "Number of steps per day")
 ```
@@ -70,9 +70,10 @@ avg_daily <- aggregate(x=list(Steps = data$steps),
 ``` r
 # Create a time series plot using ggplot function  
 
-ggplot(data=avg_daily, aes(x= Interval, y= Steps)) +    
+time_plot <- ggplot(data=avg_daily, aes(x= Interval, y= Steps)) +    
             geom_line() + xlab("5-minute interval") +
             ylab("average number of steps taken") 
+time_plot
 ```
 
 ![](PA1_template-Ashwin_files/figure-html/timeseries plot-1.png)<!-- -->
@@ -138,12 +139,45 @@ Create a histogram with the filled in data
 
 
 ``` r
-hist(Step_total$x, col = "green", breaks = 20,
+new_histogram <- hist(Step_total$x, col = "green", breaks = 20,
      main = "Total number of steps taken each day (filled in data)",
      xlab = "Number of steps per day")
 ```
 
 ![](PA1_template-Ashwin_files/figure-html/new histogram-1.png)<!-- -->
+
+``` r
+new_histogram
+```
+
+```
+## $breaks
+##  [1]     0  1000  2000  3000  4000  5000  6000  7000  8000  9000 10000 11000
+## [13] 12000 13000 14000 15000 16000 17000 18000 19000 20000 21000 22000
+## 
+## $counts
+##  [1]  2  0  1  1  1  2  1  2  5  2 18  6  6  4  2  5  0  1  0  0  1  1
+## 
+## $density
+##  [1] 3.278689e-05 0.000000e+00 1.639344e-05 1.639344e-05 1.639344e-05
+##  [6] 3.278689e-05 1.639344e-05 3.278689e-05 8.196721e-05 3.278689e-05
+## [11] 2.950820e-04 9.836066e-05 9.836066e-05 6.557377e-05 3.278689e-05
+## [16] 8.196721e-05 0.000000e+00 1.639344e-05 0.000000e+00 0.000000e+00
+## [21] 1.639344e-05 1.639344e-05
+## 
+## $mids
+##  [1]   500  1500  2500  3500  4500  5500  6500  7500  8500  9500 10500 11500
+## [13] 12500 13500 14500 15500 16500 17500 18500 19500 20500 21500
+## 
+## $xname
+## [1] "Step_total$x"
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,"class")
+## [1] "histogram"
+```
 
 The new mean total number of steps taken per day is 1.0766189\times 10^{4}  
 The new total number of steps taken per day is 1.0766189\times 10^{4}     
@@ -183,12 +217,13 @@ Using a panel plot to compare the activity patterns between weekdays and weekend
 
 ``` r
 #Create a 2 panel plot comparing the activity patterns for weekdays and weekends
-ggplot(day_steps, aes(x = Interval, y = Steps)) + 
+panel_plot <- ggplot(day_steps, aes(x = Interval, y = Steps)) + 
 geom_line() + 
 facet_grid(Type_of_Day ~ .) + 
 xlab("5-minute intervals") + 
 ylab("Average number of steps taken") + 
 ggtitle("Weekdays and weekends activity patterns") 
+panel_plot
 ```
 
 ![](PA1_template-Ashwin_files/figure-html/panel plot-1.png)<!-- -->
